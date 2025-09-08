@@ -30,7 +30,7 @@ async function consumerAuthEmailMessages(channel: Channel): Promise<void> {
                 resetLink
             }
             await sendEmail(template, receiverEmail, locals);
-            // channel.ack(msg!)
+            channel.ack(msg!);
         })
 
     } catch (error) {
