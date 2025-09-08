@@ -15,9 +15,9 @@ const shared_develope_tools_1 = require("@heloyom/shared-develope-tools");
 const config_1 = require("./config");
 const log = (0, shared_develope_tools_1.winstonLogger)(`${config_1.config.ELASTIC_SEARCH_URL}`, 'notificationElasticSearchServer', 'debug');
 const elasticSearchClient = new elasticsearch_1.Client({
-    node: 'https://my-elasticsearch-project-a49e7f.es.us-central1.gcp.elastic.cloud:443',
+    node: `${config_1.config.ELASTIC_SEARCH_URL}`,
     auth: {
-        apiKey: 'WFRfTjVaZ0JETWhtelBHaVJQYk46dVZQeTdBazFzdDQtZmhXMFB1dlJ4Zw=='
+        apiKey: 'QVZzNUQ1a0JsYTYxWkU1a3k1YXQ6YU5EaGVCZF9jOXBtYlZjTlZSZHBhZw=='
     },
     serverMode: 'serverless',
 });

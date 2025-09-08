@@ -5,7 +5,7 @@ import { winstonLogger, } from '@heloyom/shared-develope-tools';
 import { config } from "@notifications/config";
 import { Application } from "express";
 import { healthRoutes } from '@notifications/routes'
-// import { checkConnection } from "@notifications/elasticsearch";
+import { checkConnection } from "@notifications/elasticsearch";
 import createConnection from "@notifications/queues/connection";
 import { Channel } from "amqplib";
 import { consumerAuthEmailMessages, consumerOrderEmailMessages } from "./queues/email.consumer";
@@ -18,7 +18,7 @@ export function start(app: Application): void {
     startServer(app);
     app.use('', healthRoutes);
     startQueues();
-    // startElasticSearch();
+    startElasticSearch();
 }
 
 async function startQueues(): Promise<void> {
@@ -39,9 +39,9 @@ async function startQueues(): Promise<void> {
     // emailChannel.publish('jobber-email-notification', 'auth-email', Buffer.from(message))
 }
 
-// function startElasticSearch(): void {
-//     checkConnection();
-// }
+function startElasticSearch(): void {
+    checkConnection();
+}
 
 function startServer(app: Application): void {
     try {
